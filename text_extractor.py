@@ -5,7 +5,7 @@ import os
 
 folder_path="./temp"
 contents=os.listdir(folder_path)
-
+custom_config = r'--psm 6'
 files=[f for f in contents if os.path.isfile(os.path.join(folder_path,f))]
 
 for f in files:
@@ -20,5 +20,5 @@ for f in files:
     elif(ex==".pdf"):
         pages=cfp(file_path)#one image per page
         for i,page in enumerate(pages):
-            text=pt.image_to_string(page)
+            text=pt.image_to_string(page,config=custom_config)
             print(f"Text from page {i+1}: \n",text)
