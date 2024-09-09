@@ -12,9 +12,11 @@ for f in files:
     f_name,ex=os.path.splitext(f)
     file_path=os.path.join(folder_path,f)
     
-    if(ex=='.png'):
+    if(ex=='.png' or ex=='.jpeg'):
+        print(file_path)
+        print("Change Line:\n")
         img=Image.open(file_path)
-        text=pt.image_to_string(img,lang='eng')
+        text=pt.image_to_string(img, lang='tel+eng', config='--psm 6')
         print(text)
     
     elif(ex==".pdf"):
